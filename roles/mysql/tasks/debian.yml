@@ -1,0 +1,11 @@
+---
+- set_fact: mysql_daemon_name=mysql
+
+- name: Install MySQL (DEB)
+  apt: update_cache=yes name={{item}} state=installed
+  with_items:
+    - mysql-server
+    - python-mysqldb
+  notify:
+    - restart mysql
+

@@ -1,0 +1,10 @@
+---
+- include: rhel.yml
+  when: ansible_os_family == "RedHat"
+
+- include: debian.yml
+  when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu"
+
+- name: Start MySQL
+  service: name={{mysql_daemon_name}} state=started enabled=yes
+

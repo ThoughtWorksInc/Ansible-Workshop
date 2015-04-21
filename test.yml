@@ -1,0 +1,19 @@
+---
+- hosts: vagrant
+  user: vagrant
+  sudo: yes
+  tasks:
+  - name: update to latest vim
+    action: yum name=vim state=latest
+
+  - name:  create test file
+    action: copy src=README.md dest=/tmp/
+
+  tasks:
+  - name: update to latest httpd
+    action: yum name=httpd state=latest
+    notify: restart httpd
+
+  handlers:
+  - name: restart httpd
+    action: service name=httpd state=restarted
