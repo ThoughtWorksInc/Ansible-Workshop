@@ -1,0 +1,3 @@
+---
+- name: restart httpd
+  service: name={{apache_daemon_name}} state=restarted

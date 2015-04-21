@@ -1,0 +1,9 @@
+---
+- include: rhel.yml
+  when: ansible_os_family == "RedHat"
+
+- include: debian.yml
+  when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu"
+
+- name: Start Apache
+  service: name={{apache_daemon_name}} state=started enabled=yes

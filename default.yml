@@ -1,0 +1,9 @@
+---
+- name: Example play
+  hosts: default
+  user: vagrant
+  sudo: yes
+  roles:
+    -  mysql
+    -  apache
+    -  wordpress

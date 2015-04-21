@@ -1,0 +1,9 @@
+---
+- set_fact: apache_daemon_name=httpd
+
+- name: Install Httpd(Centos)
+  yum: name={{item}} state=installed
+  with_items:
+    - httpd
+  notify:
+    - restart httpd

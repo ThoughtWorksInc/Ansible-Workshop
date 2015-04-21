@@ -1,0 +1,10 @@
+---
+- set_fact: mysql_daemon_name=mysqld
+
+- name: Install MySQL (RPM)
+  yum: name={{item}} state=installed
+  with_items:
+    - mysql-server
+    - MySQL-python
+  notify:
+    - restart mysql

@@ -1,0 +1,8 @@
+---
+- set_fact: apache_daemon_name=apache
+- name: Install Apache(Deb)
+  apt: update_cache=yes name={{item}} state=installed
+  with_items:
+    - apache2
+  notify:
+    - restart apache
