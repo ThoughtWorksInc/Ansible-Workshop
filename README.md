@@ -7,4 +7,6 @@ Before the Dojo:
 - Then in the Vagrantfile uncomment/comment out the box definitions to choose the OS you wish to use
 - Type ```vagrant up```
 
-Make sure you spin up the virtual box before you take part in the dojo.
+Please make sure:
+1. you spin up the virtual box before you take part in the dojo.
+2. understand the whole process of how wordpress is set up with the os you choose.
