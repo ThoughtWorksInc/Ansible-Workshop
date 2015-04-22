@@ -8,5 +8,6 @@ Before the Dojo:
 - Type ```vagrant up```
 
 Please make sure:
+
 1. you spin up the virtual box before you take part in the dojo.
 2. understand the whole process of how wordpress is set up with the os you choose.
