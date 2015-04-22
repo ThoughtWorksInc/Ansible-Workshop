@@ -26,7 +26,7 @@
   file: path=/var/logs/wordpress/ force=yes owner=apache group=apache state=directory
 
 - name: create wordpress database
-  command: mysql -u root -e "CREATE DATABASE IF NOT EXISTS {{wordpress_db_name}};"
+  mysql_db: name={{wordpress_db_name}} state=present
 
 - name: create db credential for wordpress
-  command: mysql -u root -e "grant all on {{wordpress_db_name}}.* to '{{wordpress_db_user}}'@'localhost' identified by '{{wordpress_db_password}}';"
+  mysql_user: name={{wordpress_db_user}} password={{wordpress_db_password}} priv='{{wordpress_db_name}}.*:ALL'
