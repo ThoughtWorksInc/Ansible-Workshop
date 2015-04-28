@@ -11,10 +11,10 @@
     - php-mysql
 
 - name: download wordpress packaged file
-  command: wget -c --no-check-certificate -O /opt/wordpress.tar.gz "http://wordpress.org/latest.tar.gz"
+  shell: test -f /opt/wordpress.tar.gz || wget -c --no-check-certificate -O /opt/wordpress.tar.gz http://wordpress.org/latest.tar.gz  free_form=yes
 
 - name: uncompress wordpress
-  command: sudo tar xvzf /opt/wordpress.tar.gz -C /var/www/html --strip 1
+  command: sudo tar xvzf /opt/wordpress.tar.gz -C /var/www/html --strip 1 --diff  free_form=yes
 
 - name: set proper permission to wordpress
   file: path=/var/www/html/ owner=apache group=apache recurse=yes state=directory
