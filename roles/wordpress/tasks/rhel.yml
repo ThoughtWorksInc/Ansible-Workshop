@@ -9,18 +9,21 @@
   with_items:
     - php
     - php-mysql
+    - php-gd
+  notify:
+    - restart {{apache_daemon_name}}  
 
 - name: download wordpress packaged file
-  shell: test -f /opt/wordpress.tar.gz || wget -c --no-check-certificate -O /opt/wordpress.tar.gz http://wordpress.org/latest.tar.gz  free_form=yes
+  shell: test -f /opt/wordpress.tar.gz || wget -c --no-check-certificate -O /opt/wordpress.tar.gz http://wordpress.org/latest.tar.gz
 
 - name: uncompress wordpress
-  command: sudo tar xvzf /opt/wordpress.tar.gz -C /var/www/html --strip 1 --diff  free_form=yes
+  command: sudo tar xvzf /opt/wordpress.tar.gz -C /var/www/html --strip 1
 
 - name: set proper permission to wordpress
   file: path=/var/www/html/ owner=apache group=apache recurse=yes state=directory
 
 - name: set wordpress config file
-  template: src=wp-config.php  dest=/opt/wordpress/wp-config.php owner=apache group=apache
+  template: src=wp-config.php  dest=/var/www/html/wp-config.php owner=apache group=apache
 
 - name: create log file directory
   file: path=/var/logs/wordpress/ force=yes owner=apache group=apache state=directory
